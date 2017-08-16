@@ -3,15 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Chu XingHe&#39;s Blog</title>
+  <title>对于梯度下降的理解 | Chu XingHe&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Chu XingHe&#39;s Blog">
-<meta property="og:url" content="http://git@github.com:username/repo.git/index.html">
+  <meta name="description" content="最近看了些机器学习的东西，记录一下对这两个算法的理解。 梯度下降这个算法是为了得到能够使得代价函数最小值的$\Theta$ ， $$J\left ( \Theta  \right )= \frac{1}{2}\sum{j=1}^{m}\left [ h{\Theta } \left ( x^{\left ( j \right )} \right )-y^{\left ( j \right )}\r">
+<meta name="keywords" content="技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对于梯度下降的理解">
+<meta property="og:url" content="http://git@github.com:username/repo.git/2017/08/16/对于梯度上升-下降和牛顿方法的理解/index.html">
 <meta property="og:site_name" content="Chu XingHe&#39;s Blog">
+<meta property="og:description" content="最近看了些机器学习的东西，记录一下对这两个算法的理解。 梯度下降这个算法是为了得到能够使得代价函数最小值的$\Theta$ ， $$J\left ( \Theta  \right )= \frac{1}{2}\sum{j=1}^{m}\left [ h{\Theta } \left ( x^{\left ( j \right )} \right )-y^{\left ( j \right )}\r">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-16T08:03:24.125Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chu XingHe&#39;s Blog">
+<meta name="twitter:title" content="对于梯度下降的理解">
+<meta name="twitter:description" content="最近看了些机器学习的东西，记录一下对这两个算法的理解。 梯度下降这个算法是为了得到能够使得代价函数最小值的$\Theta$ ， $$J\left ( \Theta  \right )= \frac{1}{2}\sum{j=1}^{m}\left [ h{\Theta } \left ( x^{\left ( j \right )} \right )-y^{\left ( j \right )}\r">
   
     <link rel="alternate" href="/atom.xml" title="Chu XingHe&#39;s Blog" type="application/atom+xml">
   
@@ -64,9 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-对于梯度上升-下降和牛顿方法的理解" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-对于梯度上升-下降和牛顿方法的理解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/16/对于梯度上升-下降和牛顿方法的理解/" class="article-date">
   <time datetime="2017-08-16T04:56:18.000Z" itemprop="datePublished">2017-08-16</time>
@@ -79,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/16/对于梯度上升-下降和牛顿方法的理解/">对于梯度下降的理解</a>
+    <h1 class="article-title" itemprop="name">
+      对于梯度下降的理解
     </h1>
   
 
@@ -118,108 +121,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-深夜随笔" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/15/深夜随笔/" class="article-date">
-  <time datetime="2017-08-15T15:52:08.000Z" itemprop="datePublished">2017-08-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/15/深夜随笔/">深夜随笔</a>
-    </h1>
+    <a href="/2017/08/15/深夜随笔/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">深夜随笔</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2017年8月15日，今天是抗战胜利的纪念日，不觉得想起中国近代近百年的屈辱史。也就想到了鸦片。</p>
-<p>1840年，鸦片战争爆发。那个年代，好多人都是抱着试试的念头开始接触鸦片，之后不能自拔，最终毁在吸食鸦片上。其实，无论在什么时候，都是存在鸦片的，我给鸦片的定义是人们离不开的东西。</p>
-<p><img src="https://raw.githubusercontent.com/CXHero/cxhero.github.io/master/picture/cxhero.JPG" alt=""></p>
-<p>人人手里拿的智能手机是鸦片，人们乘坐的交通工具是鸦片，少年们玩的电脑游戏是鸦片…然而更多的，我想从精神层面来讲，比如一个人整天拿自己和别人作比较来获得自信，他就会从不如他的人身上得到满足，感到自得，逐渐得，这就成了他精神上的鸦片，然而这是很可怕的，当他比较的这个人超过他时，他就失去了鸦片的来源，从而变得自怨自艾，在很长时间内无法走出困境；再比如，一个人一直相信并依赖着另一个人，逐渐得，这个人，或是朋友或是恋人，就会成为他的鸦片，然而，如果能一直下去，那最好，但是当这个人要离他而去或者背叛他时，他就会发现生活会变得很空虚，也很渺茫；再举一个例子，当一个人找了一份很不错的工作，这时，他想，这份工过很好，也很适合他，我想在这个岗位上一直干下去，直到退休，于是，他便不在想着跳槽，只想着在这里一步步高升，逐渐得，在他为工作辛劳的时候，对这份工作的依赖便成为他的鸦片，而当他失去这份工作或者在这份工作中感到不如意（比如说他竞选重要职位失败），他就会觉得整个世界都变得昏暗了，想跳槽可能也会由于长时间的心理暗示（吸食鸦片）而没有足够的勇气。</p>
-<p>然而，人不可避免的要在精神上吸食鸦片，比如说做一件事情，就一定要对这件事情执着一些才能做到，如果在做这件事情期间，一直想着，我不能对他太执着，我做不好也没关系等等，那可能就真的做不好了；再比如，当步入婚姻的殿堂时，就一定要把另一半当成自己生命中的鸦片，相信他，并相互依存，否则，如果在婚姻中尽量不对他产生心理上的依赖，那便一定得不到真正的幸福，交真心的朋友也是同样的道理。</p>
-<p>所以，生活中有的鸦片是坏的鸦片，比如上面的第一个例子，而且是完全可以自我调整戒掉的；有的鸦片虽然也是鸦片，但要是我们想要有所成就，想要享受生活的美好，便不得不去吸食。对于这一类鸦片，我想说，对待生命你不妨大胆一些，尽管放心大胆的去吸食吧，这世上没有什么是永恒的，是绝对的，但至少我们能在还没有让我们失望之前投入过，享受过，那便没有遗憾；就算真得会让我们失望，那它也就是之前吸食过的一个鸦片而已，没什么大不了的。</p>
-<p>相比之下，更为重要的，是要在生活中时刻清楚自己正在吸食着哪些鸦片，哪些该吸，哪些不该吸，及时戒掉不该吸的，吸好该吸的，这样才能活的游刃有余，才算得上清醒。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://git@github.com:username/repo.git/2017/08/15/深夜随笔/" data-id="cj6f05mjj0000f0ibrvnfvz5o" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-OAI顶层部分代码分析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/15/OAI顶层部分代码分析/" class="article-date">
-  <time datetime="2017-08-15T12:38:02.000Z" itemprop="datePublished">2017-08-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/15/OAI顶层部分代码分析/">OAI顶层部分代码分析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​        OAI（openairinterface5g）是由法国EURECOM组织编写的一套基于软件定义无线电（SDR）实现LTE系统的UE，eNodeB和EPC架构的开源平台。</p>
-<p>​    这套系统是基于Ubuntu14.04来实现的，目前已经有很多版本。</p>
-<p>​    OAI可以用于LTE的实现，SDR LTE主要包含三个元素：UE，eNodeB和EPC（细分为MME，SPGW，HSS），对于eNodeB的实现是通过USRP来进行的；OAI也可以用于LTE的仿真，主要有DLSIM，ULSIM等平台，本文中基于的其实是DLSIM的仿真平台，其整体结构图如图所示。</p>
-<p><img src="https://raw.githubusercontent.com/CXHero/cxhero.github.io/master/picture/OAI%E9%A1%B6%E5%B1%82%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%901.png" alt=""></p>
-<p>​    这个文件是lte-softmodem.c，主要用于控制UE和eNB线程的进行。在eNB和UE两侧，分别控制着相应的进程，比如说UE侧有rxn_txnp4,和synch这两个进程，其实是3个，因为rxn_txnp4有两个，eNB侧主要有rxtx，FH，synch，prach这四个进程，rxtx也有两个。</p>
-<p><img src="https://raw.githubusercontent.com/CXHero/cxhero.github.io/master/picture/OAI%E9%A1%B6%E5%B1%82%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%902.png" alt=""></p>
-<p>​    eNB的四个线程控制着数据的发送接收与同步</p>
-<p>​    这四个进程之间会互相改变参数，如灰色箭头所示，从而控制进程的运行和等待，asynch这个线程翻译出来是异步的意思，但在nodefunction为3GPP_eNB的函数指针里，是空的。</p>
-<p><img src="https://raw.githubusercontent.com/CXHero/cxhero.github.io/master/picture/OAI%E9%A1%B6%E5%B1%82%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%903.png" alt=""></p>
-<p>​    物理层发送数据的主要流程</p>
-<p>​    前面是初始化以及确定一些相关的信息，比如说是不是pmch子帧（物理层多播信道：传递MBMS相关的数据，有MBMS业务才用到PMCH信道），之后会填充DCI信息，并编码调制，同时确定资源快的分配；然后会进行SI和RA的操作，之后才是数据的编码调制。</p>
-<p>​    SI：UE需要获取到小区的系统信息（System Information），以便接入该小区并在该小区内正确地工作</p>
-<p>​    RA：RandomAccess，是UE接入网络的重要步骤，RA主要是要进行网络接入同步，获得网络中唯一ID，以供eNodeB进行调度</p>
-<p><img src="https://raw.githubusercontent.com/CXHero/cxhero.github.io/master/picture/OAI%E9%A1%B6%E5%B1%82%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%904.png" alt=""></p>
-<p>​    以上就是对OAI顶层部分代码的分析，如有错误欢迎指正。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://git@github.com:username/repo.git/2017/08/15/OAI顶层部分代码分析/" data-id="cj6dl4fxb0000ioibty65mvex" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
