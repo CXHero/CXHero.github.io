@@ -55,7 +55,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://git@github.com:username/repo.git"></form>
@@ -90,27 +90,27 @@
       
         <p>最近看了些机器学习的东西，记录一下对这两个算法的理解。</p>
 <h4 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h4><p>这个算法是为了得到能够使得代价函数最小值的$\Theta$ ，</p>
-<p>$$<br>J\left ( \Theta  \right )= \frac{1}{2}\sum<em>{j=1}^{m}\left [ h</em>{\Theta } \left ( x^{\left ( j \right )} \right )-y^{\left ( j \right )}\right ]^{2}<br>$$<br>在这个函数中，一共有m组随机样本$\left ( x^{\left ( i \right )} ,y^{\left ( i \right )}\right )$，其中，</p>
-<p>$h<em>{\Theta }=\sum</em>{i=0}^{n}\Theta <em>{i}x</em>{i},x_{0}=1$</p>
+<p>$$<br>J\left ( \Theta  \right )= \frac{1}{2}\sum_{j=1}^{m}\left [ h_{\Theta } \left ( x^{\left ( j \right )} \right )-y^{\left ( j \right )}\right ]^{2}<br>$$<br>在这个函数中，一共有m组随机样本$\left ( x^{\left ( i \right )} ,y^{\left ( i \right )}\right )$，其中，</p>
+<p>$h_{\Theta }=\sum_{i=0}^{n}\Theta _{i}x_{i},x_{0}=1$</p>
 <p>每个样本对应n+1个变量，即一共对应n+1个参数。</p>
 <p>$\Theta $的迭代公式为</p>
-<p>$\Theta <em>{i}:=\Theta </em>{i}-\alpha \cdot \frac{\partial }{\partial \Theta _{i}}J\left ( \Theta  \right )$</p>
-<p>$ \frac{\partial }{\partial \Theta <em>{i}}J\left ( \Theta  \right )$是$J\left ( \Theta  \right )$对$\Theta </em>{i}$的偏导数，其中，$\left (  \frac{\partial }{\partial \Theta <em>{0}}J\left ( \Theta  \right ) , \frac{\partial }{\partial \Theta </em>{1}}J\left ( \Theta  \right ),…, \frac{\partial }{\partial \Theta _{n}}J\left ( \Theta  \right )\right )$是$J\left ( \Theta  \right )$的梯度，在这个方向上，$J\left ( \Theta  \right )$下降最快，$\alpha$是下降的步长。</p>
+<p>$\Theta _{i}:=\Theta _{i}-\alpha \cdot \frac{\partial }{\partial \Theta _{i}}J\left ( \Theta  \right )$</p>
+<p>$ \frac{\partial }{\partial \Theta _{i}}J\left ( \Theta  \right )$是$J\left ( \Theta  \right )$对$\Theta _{i}$的偏导数，其中，$\left (  \frac{\partial }{\partial \Theta _{0}}J\left ( \Theta  \right ) , \frac{\partial }{\partial \Theta _{1}}J\left ( \Theta  \right ),…, \frac{\partial }{\partial \Theta _{n}}J\left ( \Theta  \right )\right )$是$J\left ( \Theta  \right )$的梯度，在这个方向上，$J\left ( \Theta  \right )$下降最快，$\alpha$是下降的步长。</p>
 <p>关于梯度方向下降最快的原因，首先要理解方向导数。</p>
 <p><strong>定义 </strong>设函数$z=f\left ( x,y \right )$在点$p\left ( x,y \right )$的某一邻域$U\left ( p \right )$内有定义.自点$P$引射线$l$.设$x$轴正向到射线$l$的转角为$\varphi$（逆时针方向：$\varphi &gt;0$；顺时针方向：$\varphi &lt;0$），并设$P{}’\left ( x+\Delta x,y+\Delta y \right )$为$l$上的另一点且$P{}’\in U\left ( P \right )$。我们考虑函数的增量$f\left ( x+\Delta x,y+\Delta y \right )-f\left ( x,y \right )$与$P$、$P{}’$两点之间的距离$\rho =\sqrt{\left ( \Delta x \right )^{2}+\left ( \Delta y \right )^{2}}$的比值。当$P{}’$沿着$l$趋于$P$时，如果这个比的极限存在，则称这个极限为函数$f\left ( x,y \right )$在点$P$沿着$l$的方向导数，记作$\frac{\partial f}{\partial l}$，即<br>$$<br>\frac{\partial f}{\partial l}=\lim_{\rho \rightarrow 0}\frac{f\left ( x+\Delta x,y+\Delta y \right )-f\left ( x,y \right )}{\rho }<br>$$<br>而由于$z=f\left ( x,y \right )$在$p\left ( x,y \right )$可微分，故<br>$$<br>f\left ( x+\Delta x,y+\Delta y \right )-f\left ( x,y \right )=\frac{\partial f}{\partial x}\Delta x+\frac{\partial f}{\partial x}\Delta y+o\left ( \rho  \right )<br>$$<br>两边各除以$\rho$，得到<br>$$<br>\frac{f\left ( x+\Delta x,y+\Delta y \right )-f\left ( x,y \right )}{\rho }=\frac{\partial f}{\partial x}\frac{\Delta x}{\rho }+\frac{\partial f}{\partial x}\frac{\Delta y}{\rho }+\frac{o\left ( \rho  \right )}{\rho }=\frac{\partial f}{\partial x}\cos \varphi +\frac{\partial f}{\partial x}\sin \varphi +\frac{o\left ( \rho  \right )}{\rho }<br>$$</p>
 <p>$$<br>\lim_{\rho \rightarrow 0}\frac{f\left ( x+\Delta x,y+\Delta y \right )-f\left ( x,y \right )}{\rho }=\frac{\partial f}{\partial l}=\frac{\partial f}{\partial x}\cos \varphi +\frac{\partial f}{\partial x}\sin \varphi<br>$$</p>
-<p>$$<br>\frac{\partial f}{\partial l}=\frac{\partial f}{\partial x}\cos \varphi +\frac{\partial f}{\partial x}\sin \varphi=\left { \frac{\partial f}{\partial x},\frac{\partial f}{\partial y} \right }\left { \cos \varphi, \sin \varphi\right }=\overrightarrow{gradf\left ( x,y \right )}\cdot \overrightarrow{e}=\left | gradf\left ( x,y \right ) \right |\cos \left \langle \overrightarrow{gradf\left ( x,y \right )} ,\overrightarrow{e}\right \rangle<br>$$</p>
+<p>$$<br>\frac{\partial f}{\partial l}=\frac{\partial f}{\partial x}\cos \varphi +\frac{\partial f}{\partial x}\sin \varphi=\left \{ \frac{\partial f}{\partial x},\frac{\partial f}{\partial y} \right \}\left \{ \cos \varphi, \sin \varphi\right \}=\overrightarrow{gradf\left ( x,y \right )}\cdot \overrightarrow{e}=\left | gradf\left ( x,y \right ) \right |\cos \left \langle \overrightarrow{gradf\left ( x,y \right )} ,\overrightarrow{e}\right \rangle<br>$$</p>
 <p>所以当$\overrightarrow{gradf\left ( x,y \right )} $和$\overrightarrow{e}$同方向时，方向导数取得最大值。</p>
-<p>对于$m$个样本，<br>$$<br>\frac{\partial J\left ( \Theta <em>{i} \right )}{\partial \Theta </em>{i}}=\sum<em>{j=1}^{m}\left [ h</em>{\Theta }\left ( x^{\left ( j \right )} \right ) -y^{\left ( j \right )}\right ]\cdot x^{\left ( j \right )}<br>$$<br>所以迭代公式为：<br>$$<br>\Theta <em>{i}:=\Theta </em>{i}-\alpha \cdot \sum<em>{j=1}^{m}\left [ h</em>{\Theta }\left ( x^{\left ( j \right )} \right ) -y^{\left ( j \right )}\right ]\cdot x^{\left ( j \right )}<br>$$</p>
+<p>对于$m$个样本，<br>$$<br>\frac{\partial J\left ( \Theta _{i} \right )}{\partial \Theta _{i}}=\sum_{j=1}^{m}\left [ h_{\Theta }\left ( x^{\left ( j \right )} \right ) -y^{\left ( j \right )}\right ]\cdot x^{\left ( j \right )}<br>$$<br>所以迭代公式为：<br>$$<br>\Theta _{i}:=\Theta _{i}-\alpha \cdot \sum_{j=1}^{m}\left [ h_{\Theta }\left ( x^{\left ( j \right )} \right ) -y^{\left ( j \right )}\right ]\cdot x^{\left ( j \right )}<br>$$</p>
 <h4 id="随机梯度下降"><a href="#随机梯度下降" class="headerlink" title="随机梯度下降"></a>随机梯度下降</h4><p>这种梯度下降算法比前一种快，但是其下降的方向并不是沿着下降最快的方向进行的</p>
 <p>$REPEAT$(当没有收敛的时候)</p>
 <p>​    $For$ $j=1$ $to$ $m$       //m个样本</p>
-<p>​        $For$ $i=0$ $to$ $n$    //n+1个参数<br>$$<br>\Theta <em>{i}:=\Theta </em>{i}-\alpha \cdot\left [ h_{\Theta }\left ( x^{\left ( j \right )} \right ) -y^{\left ( j \right )}\right ]\cdot x^{\left ( j \right )}<br>$$</p>
+<p>​        $For$ $i=0$ $to$ $n$    //n+1个参数<br>$$<br>\Theta _{i}:=\Theta _{i}-\alpha \cdot\left [ h_{\Theta }\left ( x^{\left ( j \right )} \right ) -y^{\left ( j \right )}\right ]\cdot x^{\left ( j \right )}<br>$$</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://git@github.com:username/repo.git/2017/08/16/对于梯度上升-下降和牛顿方法的理解/" data-id="cj6f05mjo0001f0ib2cq3f5v3" class="article-share-link">Share</a>
+      <a data-url="http://git@github.com:username/repo.git/2017/08/16/对于梯度上升-下降和牛顿方法的理解/" data-id="cj6f2pdbo0002boibjev0lggi" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
@@ -155,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://git@github.com:username/repo.git/2017/08/15/深夜随笔/" data-id="cj6f05mjj0000f0ibrvnfvz5o" class="article-share-link">Share</a>
+      <a data-url="http://git@github.com:username/repo.git/2017/08/15/深夜随笔/" data-id="cj6f2pdbt0004boibjp8l7cs2" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
@@ -208,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://git@github.com:username/repo.git/2017/08/15/OAI顶层部分代码分析/" data-id="cj6dl4fxb0000ioibty65mvex" class="article-share-link">Share</a>
+      <a data-url="http://git@github.com:username/repo.git/2017/08/15/OAI顶层部分代码分析/" data-id="cj6f2pdbi0001boib5v1vdsv2" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
@@ -230,7 +230,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
     </div>
@@ -249,7 +249,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">3</span></li></ul>
     </div>
@@ -259,7 +259,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
